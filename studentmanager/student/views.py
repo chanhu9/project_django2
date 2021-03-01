@@ -163,7 +163,7 @@ def set_session(request):
 
     print(request.COOKIES)
 
-    member_id = 6
+    member_id = 7
 
     request.session["member_id"] = member_id
 
@@ -179,3 +179,32 @@ def get_session(request):
     print(member_id)
 
     return HttpResponse("get_session")
+
+from django.views import View
+
+from django.views.generic.base import View
+
+from django.views.generic import View
+
+class Register(View):
+
+    def get(self, request):
+
+        # return render(request, "register.html")
+        return HttpResponse("register.html")
+
+    def post(self, request):
+
+        return HttpResponse("ok")
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+class Center(LoginRequiredMixin, View):
+
+    def get(self, request):
+
+        return HttpResponse("访问个人中心")
+
+    def post(self, request):
+
+        return HttpResponse("修改个人中心")

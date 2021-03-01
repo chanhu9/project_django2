@@ -43,5 +43,9 @@ urlpatterns = [
 
     url(r'^get_session/$', views.get_session, name="get_session"),
 
+    url(r'^register/$', views.Register.as_view(), name="register"),
+
+    url(r'^center/$', views.Center.as_view(), name="center")
+
 ]
 
