@@ -45,7 +45,9 @@ urlpatterns = [
 
     url(r'^register/$', views.Register.as_view(), name="register"),
 
-    url(r'^center/$', views.Center.as_view(), name="center")
+    url(r'^center/$', views.Center.as_view(), name="center"),
+
+    url(r'^stuindex/$', views.Stuindex.as_view(), name='stuindex')
 
 ]
 

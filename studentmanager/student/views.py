@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 import json
+import datetime
 # Create your views here.
 
 
@@ -208,3 +209,20 @@ class Center(LoginRequiredMixin, View):
     def post(self, request):
 
         return HttpResponse("修改个人中心")
+
+
+class Stuindex(View):
+
+    def get(self, request):
+
+        name = request.GET['name']
+        content = {"username":name,
+                   "age":40,
+                   "birthday":datetime.datetime.now(),
+                   "friends":["tom", "jack", "rose"],
+                   "money":{"2019":10000,
+                            "2021":18000},
+                   "desc":'<script>alert("ok")</script>'
+                   }
+
+        return render(request, "student/stuindex.html", content)
