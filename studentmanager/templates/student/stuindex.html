@@ -11,17 +11,18 @@
 <hr>
 我的年级是{{age}}
 <hr>
-我的生日是{{birthday|date:'Y年 m月 d日' }}
+
+我的生日是 {{ date(birthday, 'Y年 m月 d日') }}
+{# 我的生日是{{birthday|date:'Y年 m月 d日' }} #}
 <hr>
 我的朋友{{friends}}
 <hr>
-我一共有{{friends|length}}个朋友
+{# 我一共有{{friends|length}}个朋友 #}
 <ul>
     {% for item in friends %}
-        <li>{{item}}</li>
+        <li>{{loop.index}} {{item}}</li>
     {% endfor%}
 </ul>
-
 
 <hr>
 我的女朋友是{{friends.2}}
@@ -38,7 +39,7 @@
 <hr>
 我的简介是{{desc|safe}}
 <hr>
-我没有定义的变量{{hjc|default:'hjj'}}
+{# 我没有定义的变量{{hjc|default:'hjj'}} #}
 
 </body>
 </html>
