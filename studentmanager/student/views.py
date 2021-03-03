@@ -226,3 +226,48 @@ class Stuindex(View):
                    }
 
         return render(request, "student/stuindex.html", content)
+
+
+class Setsession(View):
+
+    def get(self, request):
+
+
+        # 设置session数据
+        request.session["id"] = "hjc"
+        # 删除session数据
+
+        # del request.session["id"]
+        # 删除session中的所有数据
+        # request.session.clear()
+        #
+        # 把redis中的key都删除了
+        # request.session.flush()
+
+        # 设置session时间
+        # request.session.set_expire(10)
+        # #
+
+        return HttpResponse("set_session2")
+
+
+class get_session2(View):
+
+    def get(self, request):
+        # 获取session数据
+
+        keys1 = request.session.get("id")
+
+        return HttpResponse(keys1)
+
+class login(View):
+
+    def get(self, request):
+
+        return render(request, 'student/login.html')
+
+    def post(self, request):
+
+        return render(request, 'student/login.html')
+
+

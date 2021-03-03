@@ -46,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -57,21 +57,21 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'studentmanager.urls'
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        # 'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'environment':'student.jinja2_env.environment',
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
+    # {
+    #     'BACKEND': 'django.template.backends.jinja2.Jinja2',
+    #     # 'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    #     'DIRS': [os.path.join(BASE_DIR, "templates")],
+    #     'APP_DIRS': True,
+    #     'OPTIONS': {
+    #         'environment':'student.jinja2_env.environment',
+    #         'context_processors': [
+    #             'django.template.context_processors.debug',
+    #             'django.template.context_processors.request',
+    #             'django.contrib.auth.context_processors.auth',
+    #             'django.contrib.messages.context_processors.messages',
+    #         ],
+    #     },
+    # },
 {
 
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -156,3 +156,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRs = [
     os.path.join(BASE_DIR, "static")
 ]
+
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://47.105.192.30:6379/4",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": "mima1234"
+        }
+    }
+}
+

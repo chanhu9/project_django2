@@ -47,7 +47,13 @@ urlpatterns = [
 
     url(r'^center/$', views.Center.as_view(), name="center"),
 
-    url(r'^stuindex/$', views.Stuindex.as_view(), name='stuindex')
+    url(r'^stuindex/$', views.Stuindex.as_view(), name='stuindex'),
+
+    url(r'^set_session2', views.Setsession.as_view(), name="haha"),
+
+    url(r'^get_session2', views.get_session2.as_view(), name="haha2"),
+
+    url(r'^login/$', views.login.as_view()),
 
 ]
 
